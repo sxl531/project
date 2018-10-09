@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.dao.TbDepartmentsMapper">
+  <resultMap id="BaseResultMap" type="com.project.entity.DepartmentInfo">
+    <result column="ID" jdbcType="INTEGER" property="id" />
+    <result column="CREATION_TIME" jdbcType="TIMESTAMP" property="creationTime" />
+    <result column="DELETED" jdbcType="INTEGER" property="deleted" />
+    <result column="ENABLED" jdbcType="INTEGER" property="enabled" />
+    <result column="LAST_UPDATE_TIME" jdbcType="TIMESTAMP" property="lastUpdateTime" />
+    <result column="CATEGORY" jdbcType="INTEGER" property="category" />
+    <result column="CODE" jdbcType="VARCHAR" property="code" />
+    <result column="LEADER" jdbcType="VARCHAR" property="leader" />
+    <result column="LEADER_CONTACT" jdbcType="VARCHAR" property="leaderContact" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="PARENT_ID" jdbcType="INTEGER" property="parentId" />
+    <result column="SEQ" jdbcType="INTEGER" property="seq" />
+    <result column="DOWNGRADE" jdbcType="INTEGER" property="downgrade" />
+    <result column="FJID" jdbcType="VARCHAR" property="fjid" />
+    <result column="WG_ID" jdbcType="VARCHAR" property="wgId" />
+    <result column="AREA_NO" jdbcType="VARCHAR" property="areaNo" />
+    <result column="FULLNAME" jdbcType="VARCHAR" property="fullname" />
+    <result column="SCOPE" jdbcType="VARCHAR" property="scope" />
+  </resultMap>
+  <insert id="insert" parameterType="com.project.entity.DepartmentInfo">
+    insert into SUNXL.TB_DEPARTMENTS (ID, CREATION_TIME, DELETED, 
+      ENABLED, LAST_UPDATE_TIME, CATEGORY, 
+      CODE, LEADER, LEADER_CONTACT, 
+      NAME, PARENT_ID, SEQ, 
+      DOWNGRADE, FJID, WG_ID, 
+      AREA_NO, FULLNAME, SCOPE
+      )
+    values (#{id,jdbcType=INTEGER}, #{creationTime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=INTEGER}, 
+      #{enabled,jdbcType=INTEGER}, #{lastUpdateTime,jdbcType=TIMESTAMP}, #{category,jdbcType=INTEGER}, 
+      #{code,jdbcType=VARCHAR}, #{leader,jdbcType=VARCHAR}, #{leaderContact,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER}, #{seq,jdbcType=INTEGER}, 
+      #{downgrade,jdbcType=INTEGER}, #{fjid,jdbcType=VARCHAR}, #{wgId,jdbcType=VARCHAR}, 
+      #{areaNo,jdbcType=VARCHAR}, #{fullname,jdbcType=VARCHAR}, #{scope,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.project.entity.DepartmentInfo">
+    insert into SUNXL.TB_DEPARTMENTS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="creationTime != null">
+        CREATION_TIME,
+      </if>
+      <if test="deleted != null">
+        DELETED,
+      </if>
+      <if test="enabled != null">
+        ENABLED,
+      </if>
+      <if test="lastUpdateTime != null">
+        LAST_UPDATE_TIME,
+      </if>
+      <if test="category != null">
+        CATEGORY,
+      </if>
+      <if test="code != null">
+        CODE,
+      </if>
+      <if test="leader != null">
+        LEADER,
+      </if>
+      <if test="leaderContact != null">
+        LEADER_CONTACT,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="parentId != null">
+        PARENT_ID,
+      </if>
+      <if test="seq != null">
+        SEQ,
+      </if>
+      <if test="downgrade != null">
+        DOWNGRADE,
+      </if>
+      <if test="fjid != null">
+        FJID,
+      </if>
+      <if test="wgId != null">
+        WG_ID,
+      </if>
+      <if test="areaNo != null">
+        AREA_NO,
+      </if>
+      <if test="fullname != null">
+        FULLNAME,
+      </if>
+      <if test="scope != null">
+        SCOPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="creationTime != null">
+        #{creationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="enabled != null">
+        #{enabled,jdbcType=INTEGER},
+      </if>
+      <if test="lastUpdateTime != null">
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="category != null">
+        #{category,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="leader != null">
+        #{leader,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderContact != null">
+        #{leaderContact,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="seq != null">
+        #{seq,jdbcType=INTEGER},
+      </if>
+      <if test="downgrade != null">
+        #{downgrade,jdbcType=INTEGER},
+      </if>
+      <if test="fjid != null">
+        #{fjid,jdbcType=VARCHAR},
+      </if>
+      <if test="wgId != null">
+        #{wgId,jdbcType=VARCHAR},
+      </if>
+      <if test="areaNo != null">
+        #{areaNo,jdbcType=VARCHAR},
+      </if>
+      <if test="fullname != null">
+        #{fullname,jdbcType=VARCHAR},
+      </if>
+      <if test="scope != null">
+        #{scope,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
