@@ -17,9 +17,9 @@ public class SysUserServiceImpl implements ISysUserService {
     @Override
     public SysUser findUserByLoginName(String loginName) {
         List<SysUser> list=tbSysUserMapper.findSysUserByLoginName(loginName);
-        if(list == null){
-            return null;
+        if(list != null  && list.size() > 0){
+            return list.get(0);
         }
-        return list.get(0);
+        return null;
     }
 }

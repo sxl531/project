@@ -1,16 +1,21 @@
 package com.project.util;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class JsonResponse<T> implements Serializable {
-    private boolean success;
-    private String error;
-    private String msg;
-    private T data;
 
+    @ApiModelProperty(name = "status" ,value = "调用结果",required = true)
+    private boolean success;
+    @ApiModelProperty(name = "error" ,value = "错误码",required = false)
+    private String error;
+    @ApiModelProperty(name = "msg" ,value = "调用结果信息",required = false)
+    private String msg;
+    @ApiModelProperty(name = "data" ,value = "返回数据",required = false)
+    private T data;
 
     /**
      * 无参返回成功

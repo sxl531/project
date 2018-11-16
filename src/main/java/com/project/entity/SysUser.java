@@ -1,7 +1,8 @@
 package com.project.entity;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
-
+@XmlRootElement
 public class SysUser {
     private int id;
 

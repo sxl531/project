@@ -1,17 +1,18 @@
 package com.project.entity;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 public class DepartmentInfo {
     private int id; //主键
-    private Timestamp creationTime; //创建时间
+    private Date creationTime; //创建时间
     public  int deleted;    //启用标志
-    private Timestamp lastUpdateTime;   //最后更新时间
+    private Date lastUpdateTime;   //最后更新时间
     private String name;    //部门名称
     private int parentId;   //上级部门id
     private String wgId;    //部门编号
     private String fullname;//部门全称
-    private String scope;   //部门区域
+    private int scopeId;   //部门区域
+    private int seq;    //部门顺序
 
     public int getId() {
         return id;
@@ -21,11 +22,11 @@ public class DepartmentInfo {
         this.id = id;
     }
 
-    public Timestamp getCreationTime() {
+    public Date getCreationTime() {
         return creationTime;
     }
 
-    public void setCreationTime(Timestamp creationTime) {
+    public void setCreationTime(Date creationTime) {
         this.creationTime = creationTime;
     }
 
@@ -37,11 +38,11 @@ public class DepartmentInfo {
         this.deleted = deleted;
     }
 
-    public Timestamp getLastUpdateTime() {
+    public Date getLastUpdateTime() {
         return lastUpdateTime;
     }
 
-    public void setLastUpdateTime(Timestamp lastUpdateTime) {
+    public void setLastUpdateTime(Date lastUpdateTime) {
         this.lastUpdateTime = lastUpdateTime;
     }
 
@@ -77,11 +78,19 @@ public class DepartmentInfo {
         this.fullname = fullname;
     }
 
-    public String getScope() {
-        return scope;
+    public int getScopeId() {
+        return scopeId;
     }
 
-    public void setScope(String scope) {
-        this.scope = scope;
+    public void setScopeId(int scopeId) {
+        this.scopeId = scopeId;
+    }
+
+    public int getSeq() {
+        return seq;
+    }
+
+    public void setSeq(int seq) {
+        this.seq = seq;
     }
 }

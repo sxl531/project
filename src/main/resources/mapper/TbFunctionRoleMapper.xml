@@ -6,16 +6,16 @@
     <result column="FUNCTION_ID" jdbcType="INTEGER" property="functionId" />
     <result column="ROLE_ID" jdbcType="INTEGER" property="roleId" />
     <result column="CREATE_USER_ID" jdbcType="INTEGER" property="createUserId" />
-    <result column="CREATE_TIME" jdbcType="DATE" property="createTime" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <insert id="insert" parameterType="com.project.entity.FunctionRole">
-    insert into SUNXL.TB_FUNCTION_ROLE (ID, FUNCTION_ID, ROLE_ID, 
+    insert into TB_FUNCTION_ROLE (ID, FUNCTION_ID, ROLE_ID, 
       CREATE_USER_ID, CREATE_TIME)
     values (#{id,jdbcType=INTEGER}, #{functionId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}, 
-      #{createUserId,jdbcType=INTEGER}, #{createTime,jdbcType=DATE})
+      #{createUserId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.project.entity.FunctionRole">
-    insert into SUNXL.TB_FUNCTION_ROLE
+    insert into TB_FUNCTION_ROLE
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         ID,
@@ -47,7 +47,7 @@
         #{createUserId,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
-        #{createTime,jdbcType=DATE},
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>

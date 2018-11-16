@@ -6,4 +6,6 @@ public interface TbDepartmentsMapper {
     int insert(DepartmentInfo record);
 
     int insertSelective(DepartmentInfo record);
+
+    DepartmentInfo selectByPrimaryKey(int id);
 }

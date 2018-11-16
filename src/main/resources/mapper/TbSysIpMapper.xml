@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.dao.TbSysIpMapper">
-  <resultMap id="BaseResultMap" type="com.project.entity.TbSysIp">
+  <resultMap id="BaseResultMap" type="com.project.entity.SysIp">
     <result column="ID" jdbcType="INTEGER" property="id" />
     <result column="IP_ADDRESS" jdbcType="VARCHAR" property="ipAddress" />
     <result column="DELETE_FLAG" jdbcType="INTEGER" property="deleteFlag" />
     <result column="CREATE_USER_ID" jdbcType="INTEGER" property="createUserId" />
-    <result column="CREATE_TIME" jdbcType="DATE" property="createTime" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
     <result column="COMMENTS" jdbcType="VARCHAR" property="comments" />
   </resultMap>
-  <insert id="insert" parameterType="com.project.entity.TbSysIp">
-    insert into SUNXL.TB_SYS_IP (ID, IP_ADDRESS, DELETE_FLAG, 
+
+  <sql id="Base_Column_List">
+    ID,IP_ADDRESS,DELETE_FLAG,CREATE_USER_ID,CREATE_TIME,COMMENTS
+  </sql>
+
+  <insert id="insert" parameterType="com.project.entity.SysIp">
+    insert into TB_SYS_IP (ID, IP_ADDRESS, DELETE_FLAG, 
       CREATE_USER_ID, CREATE_TIME, COMMENTS
       )
     values (#{id,jdbcType=INTEGER}, #{ipAddress,jdbcType=VARCHAR}, #{deleteFlag,jdbcType=INTEGER}, 
-      #{createUserId,jdbcType=INTEGER}, #{createTime,jdbcType=DATE}, #{comments,jdbcType=VARCHAR}
+      #{createUserId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{comments,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.project.entity.TbSysIp">
-    insert into SUNXL.TB_SYS_IP
+  <insert id="insertSelective" parameterType="com.project.entity.SysIp">
+    insert into TB_SYS_IP
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         ID,
@@ -53,11 +58,19 @@
         #{createUserId,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
-        #{createTime,jdbcType=DATE},
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="comments != null">
         #{comments,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
+
+  <select id="selectByIp" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from TB_SYS_IP
+    where DELETE_FLAG=0 and IP_ADDRESS like   #{ip} || '%'
+  </select>
+
 </mapper>

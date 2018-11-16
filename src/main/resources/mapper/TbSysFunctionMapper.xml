@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.dao.TbSysFunctionMapper">
-  <resultMap id="BaseResultMap" type="com.project.entity.TbSysFunction">
+  <resultMap id="BaseResultMap" type="com.project.entity.SysFunction">
     <result column="ID" jdbcType="INTEGER" property="id" />
     <result column="FUNCTION_NAME" jdbcType="VARCHAR" property="functionName" />
     <result column="COMMENTS" jdbcType="VARCHAR" property="comments" />
   </resultMap>
-  <insert id="insert" parameterType="com.project.entity.TbSysFunction">
-    insert into SUNXL.TB_SYS_FUNCTION (ID, FUNCTION_NAME, COMMENTS
+  <insert id="insert" parameterType="com.project.entity.SysFunction">
+    insert into TB_SYS_FUNCTION (ID, FUNCTION_NAME, COMMENTS
       )
     values (#{id,jdbcType=INTEGER}, #{functionName,jdbcType=VARCHAR}, #{comments,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.project.entity.TbSysFunction">
-    insert into SUNXL.TB_SYS_FUNCTION
+  <insert id="insertSelective" parameterType="com.project.entity.SysFunction">
+    insert into TB_SYS_FUNCTION
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         ID,

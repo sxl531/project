@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.dao.TbSysLoginTimeControlMapper">
-  <resultMap id="BaseResultMap" type="com.project.entity.TbSysLoginTimeControl">
+  <resultMap id="BaseResultMap" type="com.project.entity.SysLoginTimeControl">
     <result column="ID" jdbcType="INTEGER" property="id" />
     <result column="CONTROL_NAME" jdbcType="VARCHAR" property="controlName" />
-    <result column="START_TIME" jdbcType="DATE" property="startTime" />
-    <result column="END_TIME" jdbcType="DATE" property="endTime" />
+    <result column="START_TIME" jdbcType="VARCHAR" property="startTime" />
+    <result column="END_TIME" jdbcType="VARCHAR" property="endTime" />
     <result column="CREATE_USER_ID" jdbcType="INTEGER" property="createUserId" />
-    <result column="CREATE_TIME" jdbcType="DATE" property="createTime" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
     <result column="COMMENS" jdbcType="VARCHAR" property="commens" />
   </resultMap>
-  <insert id="insert" parameterType="com.project.entity.TbSysLoginTimeControl">
-    insert into SUNXL.TB_SYS_LOGIN_TIME_CONTROL (ID, CONTROL_NAME, START_TIME, 
+  <insert id="insert" parameterType="com.project.entity.SysLoginTimeControl">
+    insert into TB_SYS_LOGIN_TIME_CONTROL (ID, CONTROL_NAME, START_TIME, 
       END_TIME, CREATE_USER_ID, CREATE_TIME, 
       COMMENS)
-    values (#{id,jdbcType=INTEGER}, #{controlName,jdbcType=VARCHAR}, #{startTime,jdbcType=DATE}, 
-      #{endTime,jdbcType=DATE}, #{createUserId,jdbcType=INTEGER}, #{createTime,jdbcType=DATE}, 
+    values (#{id,jdbcType=INTEGER}, #{controlName,jdbcType=VARCHAR}, #{startTime,jdbcType=VARCHAR},
+      #{endTime,jdbcType=VARCHAR}, #{createUserId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
       #{commens,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.project.entity.TbSysLoginTimeControl">
-    insert into SUNXL.TB_SYS_LOGIN_TIME_CONTROL
+  <insert id="insertSelective" parameterType="com.project.entity.SysLoginTimeControl">
+    insert into TB_SYS_LOGIN_TIME_CONTROL
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         ID,
@@ -51,16 +51,16 @@
         #{controlName,jdbcType=VARCHAR},
       </if>
       <if test="startTime != null">
-        #{startTime,jdbcType=DATE},
+        #{startTime,jdbcType=VARCHAR},
       </if>
       <if test="endTime != null">
-        #{endTime,jdbcType=DATE},
+        #{endTime,jdbcType=VARCHAR},
       </if>
       <if test="createUserId != null">
         #{createUserId,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
-        #{createTime,jdbcType=DATE},
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="commens != null">
         #{commens,jdbcType=VARCHAR},

@@ -6,4 +6,6 @@ public interface TbSysLoginTimeControlMapper {
     int insert(SysLoginTimeControl record);
 
     int insertSelective(SysLoginTimeControl record);
+
+    SysLoginTimeControl selectByPrimaryKey(int ids);
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.dao.TbSysUserMapper">
-  <resultMap id="BaseResultMap" type="com.project.entity.TbSysUser">
+  <resultMap id="BaseResultMap" type="com.project.entity.SysUser">
     <result column="ID" jdbcType="INTEGER" property="id" />
     <result column="LOGIN_NAME" jdbcType="VARCHAR" property="loginName" />
     <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
@@ -14,11 +14,20 @@
     <result column="USER_STATUS" jdbcType="INTEGER" property="userStatus" />
     <result column="DELETE_FLAG" jdbcType="INTEGER" property="deleteFlag" />
     <result column="CREATE_USER_ID" jdbcType="INTEGER" property="createUserId" />
-    <result column="CREATE_TIME" jdbcType="DATE" property="createTime" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
     <result column="LOGIN_TIME_CONTROL" jdbcType="INTEGER" property="loginTimeControl" />
   </resultMap>
-  <insert id="insert" parameterType="com.project.entity.TbSysUser">
-    insert into SUNXL.TB_SYS_USER (ID, LOGIN_NAME, PASSWORD, 
+  
+  <sql id="Base_Colunm">
+    ID, LOGIN_NAME, PASSWORD,
+      TELEPHONE, EMAIL, TRUE_NAME,
+      IDCARD, GENDER_CODE, DEPART_ID,
+      USER_STATUS, DELETE_FLAG, CREATE_USER_ID,
+      CREATE_TIME, LOGIN_TIME_CONTROL
+  </sql>
+
+  <insert id="insert" parameterType="com.project.entity.SysUser">
+    insert into TB_SYS_USER (ID, LOGIN_NAME, PASSWORD, 
       TELEPHONE, EMAIL, TRUE_NAME, 
       IDCARD, GENDER_CODE, DEPART_ID, 
       USER_STATUS, DELETE_FLAG, CREATE_USER_ID, 
@@ -27,10 +36,10 @@
       #{telephone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{trueName,jdbcType=VARCHAR}, 
       #{idcard,jdbcType=VARCHAR}, #{genderCode,jdbcType=INTEGER}, #{departId,jdbcType=INTEGER}, 
       #{userStatus,jdbcType=INTEGER}, #{deleteFlag,jdbcType=INTEGER}, #{createUserId,jdbcType=INTEGER}, 
-      #{createTime,jdbcType=DATE}, #{loginTimeControl,jdbcType=INTEGER})
+      #{createTime,jdbcType=TIMESTAMP}, #{loginTimeControl,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.project.entity.TbSysUser">
-    insert into SUNXL.TB_SYS_USER
+  <insert id="insertSelective" parameterType="com.project.entity.SysUser">
+    insert into TB_SYS_USER
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         ID,
@@ -113,11 +122,17 @@
         #{createUserId,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
-        #{createTime,jdbcType=DATE},
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="loginTimeControl != null">
         #{loginTimeControl,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
+
+  <select id="findSysUserByLoginName" parameterType="java.lang.String" resultMap="BaseResultMap">
+      select 
+      <include refid="Base_Colunm"/>
+      from TB_SYS_USER where LOGIN_NAME = #{loginName}
+  </select>
 </mapper>
